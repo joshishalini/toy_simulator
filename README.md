@@ -39,14 +39,12 @@ REPORT
 
 ## How to Run
 ```ruby
-input = "
-  PLACE 1,2,EAST
+input = "PLACE 1,2,EAST
   MOVE
   MOVE
   LEFT
   MOVE
-  REPORT
-"
+  REPORT"
 
 sim = Simulator.new
 sim.run(input)
