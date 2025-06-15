@@ -37,6 +37,8 @@ MOVE
 REPORT
 ```
 
+---
+
 ## How to Run
 ```ruby
 input = "PLACE 1,2,EAST
@@ -50,11 +52,15 @@ sim = Simulator.new
 sim.run(input)
 ```
 
+---
+
 ## Running Test
 ```text
 bundle install
 bundle exec rspec
 ```
+
+---
 
 ## My Approach
 - Began by implementing the core movement logic in robot.rb, ensuring the robot could be placed, moved, and rotated correctly.
@@ -62,6 +68,8 @@ bundle exec rspec
 - Added basic validation to ignore commands issued before the robot is placed, and gracefully skip invalid or unrecognized commands.
 - Wrote RSpec tests to verify expected behaviors and edge cases.
 - Included inline comments for better clarity and maintainability.
+
+---
 
 ## If I Had More Time
 - Added more robust validation and error handling unsupported commands.
