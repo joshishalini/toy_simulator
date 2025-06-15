@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative './robot'
 
 # Simulator class is responsible for parsing and executing robot commands
@@ -23,15 +25,11 @@ class Simulator
 
   # Parses a single line of input and returns the command and arguments
   def parse_command(line)
-    # If the line starts with 'PLACE', extract the coordinates and direction
-    if line.start_with?('PLACE')
-      parts = line.split(' ')
-      args = parts.last.split(',') if parts.size > 1
-      return ['PLACE', args]
-    else
-      # For other commands (e.g. MOVE, LEFT), return command in uppercase with no args
-      return [line.strip.upcase, nil]
-    end
+    return [line.strip.upcase, nil] unless line.start_with?('PLACE')
+
+    parts = line.split(' ')
+    args = parts.last.split(',') if parts.size > 1
+    ['PLACE', args]
   end
 
   # Executes a command by calling the appropriate method on the robot
@@ -39,6 +37,7 @@ class Simulator
     case command
     when 'PLACE'
       return unless args&.size == 3
+
       x, y, dir = args
       @robot.place(x.to_i, y.to_i, dir.upcase)
       @placed = true
@@ -50,7 +49,8 @@ class Simulator
       @robot.right if @placed
     when 'REPORT'
       return unless @placed
-      response = @robot.report 
+
+      response = @robot.report
       puts "#{response[:x]},#{response[:y]},#{response[:direction]}"
     end
   end
@@ -72,4 +72,3 @@ REPORT"
 
 simulator = Simulator.new
 simulator.run(input)
-

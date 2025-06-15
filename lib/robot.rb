@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class Robot
   # Define allowed X and Y ranges and directions
   X_RANGE = (0..4).to_a.freeze
   Y_RANGE = (0..4).to_a.freeze
-  DIRECTIONS = ['NORTH', 'SOUTH', 'EAST', 'WEST'].freeze
+  DIRECTIONS = %w[NORTH SOUTH EAST WEST].freeze
 
   # Initialize robot's position and direction
   def initialize
@@ -54,7 +56,7 @@ class Robot
 
   # Rotate the robot 90 degrees to the right
   def right
-		return unless placed?
+    return unless placed?
 
     case @direction
     when 'NORTH'
@@ -70,19 +72,19 @@ class Robot
 
   # Output current position and direction
   def report
-    {x: @x, y: @y, direction: @direction}
+    { x: @x, y: @y, direction: @direction }
   end
 
   private
 
   # direction set or not
-	def placed?
+  def placed?
     !@direction.nil?
   end
 
   # Validate placement input
   def valid_position?(x, y, direction)
-  	return false unless x.is_a?(Integer) && y.is_a?(Integer) && direction.is_a?(String)
+    return false unless x.is_a?(Integer) && y.is_a?(Integer) && direction.is_a?(String)
 
     X_RANGE.include?(x) && Y_RANGE.include?(y) && DIRECTIONS.include?(direction)
   end

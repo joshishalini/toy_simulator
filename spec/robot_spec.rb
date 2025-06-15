@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../lib/robot'
 
 RSpec.describe Robot do
@@ -51,7 +53,7 @@ RSpec.describe Robot do
   describe '#report' do
     it 'return the correct output' do
       robot.place(2, 3, 'SOUTH')
-      expect(robot.report).to eq({x: 2, y: 3, direction: 'SOUTH'})
+      expect(robot.report).to eq({ x: 2, y: 3, direction: 'SOUTH' })
     end
   end
 
